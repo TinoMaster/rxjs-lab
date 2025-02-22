@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { MainLayoutComponent } from './shared/layouts';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [MainLayoutComponent],
+  template: `<app-main-layout></app-main-layout>`,
 })
 export class AppComponent {
-  title = 'primeng_angular';
+  title = 'rxjs_examples_angular';
 }

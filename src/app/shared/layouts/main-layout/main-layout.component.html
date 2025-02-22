@@ -1,0 +1,74 @@
+<div class="min-h-screen bg-gray-50">
+  <!-- Sidebar -->
+  <aside
+    class="fixed left-0 top-0 h-screen w-64 bg-purple-700 text-white shadow-lg overflow-y-auto"
+  >
+    <!-- Logo Section -->
+    <div class="p-4 border-b border-purple-600">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🔬</span>
+        <h1 class="text-xl font-bold">RxJS Lab</h1>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="p-4">
+      <div class="space-y-2">
+        <div>
+          <h2
+            class="text-sm uppercase tracking-wider text-purple-200 font-semibold mb-2"
+          >
+            Conceptos Básicos
+          </h2>
+          <ul class="space-y-1">
+            @for (item of NAVIGATION_ITEMS; track item.route) {
+            <li>
+              <a
+                routerLink="/{{ item.route }}"
+                routerLinkActive="bg-purple-800"
+                class="flex items-center px-3 py-2 text-sm rounded-md transition-colors hover:bg-purple-600"
+              >
+                <fa-icon [icon]="item.icon" class="mr-2"></fa-icon>
+                {{ item.label }}
+              </a>
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Footer -->
+    <div
+      class="absolute bottom-0 left-0 right-0 p-4 border-t border-purple-600"
+    >
+      <a
+        href="https://rxjs.dev"
+        target="_blank"
+        class="flex items-center text-sm text-purple-200 hover:text-white transition-colors"
+      >
+        <span class="mr-2">📚</span>
+        Documentación RxJS
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="ml-64">
+    <!-- Header -->
+    <header
+      class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-10"
+    >
+      <div class="px-6 py-4">
+        <h2 class="text-xl font-semibold text-gray-800">
+          Laboratorio de Aprendizaje RxJS
+        </h2>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="p-6">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
