@@ -1,14 +1,12 @@
 <div class="space-y-6">
-  <header>
-    <h2 class="text-3xl font-bold text-gray-800">Observables Básicos</h2>
-    <p class="mt-2 text-gray-600">
-      Aprende los conceptos fundamentales de RxJS Observables
-    </p>
-  </header>
+  <app-header-pages
+    [title]="pageData.title"
+    [description]="pageData.description"
+  ></app-header-pages>
 
   <div class="bg-white shadow-lg rounded-lg p-6">
     <h3 class="text-xl font-semibold mb-4 text-purple-700">
-      Ejemplo 1: {{ example.title }}
+      Ejemplo 1: {{ pageData.title }}
     </h3>
     <div class="space-y-4">
       <!-- Demo del componente -->
@@ -30,54 +28,18 @@
       <div class="mt-6 space-y-4">
         <h4 class="text-lg font-semibold text-gray-700">Código TypeScript</h4>
         <app-code-block
-          [code]="example.code.typescript!"
+          [code]="pageData.code.typescript!"
           language="typescript"
-          [fileName]="example.fileName"
+          [fileName]="pageData.fileName"
         ></app-code-block>
 
         <h4 class="text-lg font-semibold text-gray-700 mt-6">Código HTML</h4>
         <app-code-block
-          [code]="example.code.html!"
+          [code]="pageData.code.html!"
           language="html"
-          fileName="basic-observables.component.html"
+          [fileName]="pageData.fileName"
         ></app-code-block>
       </div>
     </div>
-  </div>
-
-  <div class="bg-white shadow-lg rounded-lg p-6">
-    <h3 class="text-xl font-semibold mb-4 text-purple-700">
-      ¿Qué estamos aprendiendo?
-    </h3>
-    <ul class="space-y-3">
-      <li class="flex items-start">
-        <span
-          class="flex-shrink-0 w-2 h-2 mt-2 bg-purple-500 rounded-full"
-        ></span>
-        <span class="ml-4"
-          >Creación de Observables básicos usando interval</span
-        >
-      </li>
-      <li class="flex items-start">
-        <span
-          class="flex-shrink-0 w-2 h-2 mt-2 bg-purple-500 rounded-full"
-        ></span>
-        <span class="ml-4">Suscripción a Observables</span>
-      </li>
-      <li class="flex items-start">
-        <span
-          class="flex-shrink-0 w-2 h-2 mt-2 bg-purple-500 rounded-full"
-        ></span>
-        <span class="ml-4"
-          >Manejo de suscripciones y limpieza con OnDestroy</span
-        >
-      </li>
-      <li class="flex items-start">
-        <span
-          class="flex-shrink-0 w-2 h-2 mt-2 bg-purple-500 rounded-full"
-        ></span>
-        <span class="ml-4">Uso del operador take para limitar emisiones</span>
-      </li>
-    </ul>
   </div>
 </div>

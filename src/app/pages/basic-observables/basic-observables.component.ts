@@ -2,22 +2,27 @@ import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription, interval } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
-import { COUNTER_EXAMPLE } from './basic-observables.data';
+import { CodeBlockComponent } from '@shared/components';
+import { BASIC_OBSERVABLES_PAGE_DATA } from './basic-observables.data';
+import { HeaderPagesComponent } from '../../shared/components/ui/header-pages/header-pages.component';
+import { PageData } from '@app/core/interfaces/global.interface';
 
 @Component({
   selector: 'app-basic-observables',
   standalone: true,
-  imports: [CommonModule, CodeBlockComponent],
+  imports: [CommonModule, CodeBlockComponent, HeaderPagesComponent],
   templateUrl: './basic-observables.component.html',
 })
 export class BasicObservablesComponent implements OnDestroy {
+  pageData!: PageData;
+
+  constructor() {
+    this.pageData = BASIC_OBSERVABLES_PAGE_DATA;
+  }
+
   counterValue: number = 0;
   isCounterRunning: boolean = false;
   private counterSubscription?: Subscription;
-
-  // Ejemplos de código
-  example = COUNTER_EXAMPLE;
 
   startCounter() {
     if (this.isCounterRunning) return;

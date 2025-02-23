@@ -1,9 +1,9 @@
-import { CodeExample } from '../../core/interfaces/example.interface';
+import { PageData } from '@interfaces/global.interface';
 
-export const COUNTER_EXAMPLE: CodeExample = {
+export const BASIC_OBSERVABLES_PAGE_DATA: PageData = {
   title: 'Contador Simple',
   description: 'Un ejemplo básico de un contador usando interval de RxJS',
-  fileName: 'basic-observables.component.ts',
+  fileName: 'basic-observables.component',
   code: {
     typescript: `import { Component, OnDestroy } from '@angular/core';
 import { Subscription, interval } from 'rxjs';

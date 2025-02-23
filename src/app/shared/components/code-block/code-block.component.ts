@@ -6,17 +6,18 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FileExtensionPipe } from '../../pipes/file-extension.pipe';
 declare let Prism: any;
 
 @Component({
   selector: 'app-code-block',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FileExtensionPipe],
   template: `
     <div class="bg-gray-900 rounded-lg overflow-hidden">
       <!-- Header con el nombre del archivo -->
       <div class="flex items-center justify-between px-4 py-2 bg-gray-800">
-        <span class="text-sm text-gray-200">{{ fileName }}</span>
+        <span class="text-sm text-gray-200">{{ fileName | fileExtension:language }}</span>
         <span class="text-xs text-gray-400">{{ language }}</span>
       </div>
       <!-- Contenido del código -->
