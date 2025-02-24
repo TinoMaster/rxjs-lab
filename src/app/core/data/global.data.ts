@@ -1,16 +1,9 @@
 import {
   faCode,
-  faWandMagicSparkles,
-  IconDefinition,
   faPuzzlePiece,
+  faWandMagicSparkles,
 } from '@fortawesome/free-solid-svg-icons';
-
-interface NavigationItem {
-  label: string;
-  route: string;
-  icon?: IconDefinition;
-  subItems?: NavigationItem[];
-}
+import { NavigationItem } from '@interfaces/global.interface';
 
 export const NAVIGATION_ITEMS: NavigationItem[] = [
   {
