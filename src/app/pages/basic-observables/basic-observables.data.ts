@@ -1,6 +1,7 @@
 import { PageData } from '@interfaces/global.interface';
 
 export const BASIC_OBSERVABLES_PAGE_DATA: PageData = {
+  numberOfExamples: 1,
   title: 'Contador Simple',
   description: 'Un ejemplo básico de un contador usando interval de RxJS',
   fileName: 'basic-observables.component',

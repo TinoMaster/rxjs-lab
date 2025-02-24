@@ -14,10 +14,16 @@ declare let Prism: any;
   standalone: true,
   imports: [CommonModule, FileExtensionPipe],
   template: `
+    <h4 class="text-lg font-semibold text-gray-700 capitalize">
+      Código {{ language }}
+    </h4>
+
     <div class="bg-gray-900 rounded-lg overflow-hidden">
       <!-- Header con el nombre del archivo -->
       <div class="flex items-center justify-between px-4 py-2 bg-gray-800">
-        <span class="text-sm text-gray-200">{{ fileName | fileExtension:language }}</span>
+        <span class="text-sm text-gray-200">{{
+          fileName | fileExtension : language
+        }}</span>
         <span class="text-xs text-gray-400">{{ language }}</span>
       </div>
       <!-- Contenido del código -->

@@ -1,45 +1,40 @@
-<div class="space-y-6">
+<div class="p-6">
   <app-header-pages
     [title]="pageData.title"
     [description]="pageData.description"
   ></app-header-pages>
 
-  <div class="bg-white shadow-lg rounded-lg p-6">
-    <h3 class="text-xl font-semibold mb-4 text-purple-700">
-      Ejemplo 1: {{ pageData.title }}
-    </h3>
-    <div class="space-y-4">
-      <!-- Demo del componente -->
-      <div class="p-4 bg-gray-50 rounded-md">
-        <p class="text-lg mb-2">
-          Valor actual: <span class="font-semibold">{{ counterValue }}</span>
-        </p>
-        <button
-          (click)="startCounter()"
-          class="bg-purple-600 text-white px-6 py-2 rounded-md hover:bg-purple-700 transition-colors"
-          [disabled]="isCounterRunning"
-          [class.opacity-50]="isCounterRunning"
-        >
-          {{ isCounterRunning ? "Contando..." : "Iniciar Contador" }}
-        </button>
-      </div>
-
-      <!-- Código fuente -->
-      <div class="mt-6 space-y-4">
-        <h4 class="text-lg font-semibold text-gray-700">Código TypeScript</h4>
-        <app-code-block
-          [code]="pageData.code.typescript!"
-          language="typescript"
-          [fileName]="pageData.fileName"
-        ></app-code-block>
-
-        <h4 class="text-lg font-semibold text-gray-700 mt-6">Código HTML</h4>
-        <app-code-block
-          [code]="pageData.code.html!"
-          language="html"
-          [fileName]="pageData.fileName"
-        ></app-code-block>
-      </div>
+  <app-render-examples
+    [exampleNumber]="pageData.numberOfExamples ?? 1"
+    [title]="pageData.title"
+    [description]="pageData.description"
+  >
+    <!-- Demo del componente -->
+    <div example-demo>
+      <p class="text-lg mb-2">
+        Valor actual: <span class="font-semibold">{{ counterValue }}</span>
+      </p>
+      <button
+        class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
+        (click)="toggleCounter()"
+      >
+        {{ isRunning ? 'Detener' : 'Iniciar' }} Contador
+      </button>
     </div>
-  </div>
+
+    <!-- Código fuente -->
+    <div example-code>
+      <app-code-block
+        [code]="pageData.code.typescript!"
+        language="typescript"
+        [fileName]="pageData.fileName"
+      ></app-code-block>
+
+      <app-code-block
+        [code]="pageData.code.html!"
+        language="html"
+        [fileName]="pageData.fileName"
+      ></app-code-block>
+    </div>
+  </app-render-examples>
 </div>

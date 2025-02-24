@@ -1,48 +1,37 @@
 import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Subscription, interval } from 'rxjs';
-import { take } from 'rxjs/operators';
-import { CodeBlockComponent } from '@shared/components';
+import { interval, Subscription } from 'rxjs';
+import { CodeBlockComponent } from '@shared/components/code-block/code-block.component';
 import { BASIC_OBSERVABLES_PAGE_DATA } from './basic-observables.data';
-import { HeaderPagesComponent } from '../../shared/components/ui/header-pages/header-pages.component';
+import { HeaderPagesComponent } from '@shared/components/ui';
 import { PageData } from '@app/core/interfaces/global.interface';
+import { RenderExamplesComponent } from "@shared/components/render-examples/render-examples.component";
 
 @Component({
   selector: 'app-basic-observables',
   standalone: true,
-  imports: [CommonModule, CodeBlockComponent, HeaderPagesComponent],
+  imports: [CommonModule, CodeBlockComponent, HeaderPagesComponent, RenderExamplesComponent],
   templateUrl: './basic-observables.component.html',
 })
 export class BasicObservablesComponent implements OnDestroy {
-  pageData!: PageData;
-
-  constructor() {
-    this.pageData = BASIC_OBSERVABLES_PAGE_DATA;
-  }
-
+  pageData: PageData = BASIC_OBSERVABLES_PAGE_DATA;
   counterValue: number = 0;
-  isCounterRunning: boolean = false;
+  isRunning: boolean = false;
   private counterSubscription?: Subscription;
 
-  startCounter() {
-    if (this.isCounterRunning) return;
-
-    this.isCounterRunning = true;
-    this.counterValue = 0;
-
-    const counter$ = interval(1000).pipe(take(5));
-
-    this.counterSubscription = counter$.subscribe({
-      next: (value) => {
-        this.counterValue = value + 1;
-      },
-      complete: () => {
-        this.isCounterRunning = false;
-      },
-    });
+  toggleCounter(): void {
+    if (this.isRunning) {
+      this.counterSubscription?.unsubscribe();
+      this.isRunning = false;
+    } else {
+      this.counterSubscription = interval(1000).subscribe(() => {
+        this.counterValue++;
+      });
+      this.isRunning = true;
+    }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.counterSubscription?.unsubscribe();
   }
 }
