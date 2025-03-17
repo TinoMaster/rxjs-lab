@@ -25,7 +25,7 @@ export class MainLayoutComponent {
   public readonly NAVIGATION_ITEMS = NAVIGATION_ITEMS;
 
   public expandedItems = new Set<string>();
-  
+
   public readonly chevronRight = faChevronRight;
   public readonly chevronDown = faChevronDown;
 

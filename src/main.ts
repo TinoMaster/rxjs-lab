@@ -1,6 +1,6 @@
 import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { importProvidersFrom, inject } from '@angular/core';
-import { bootstrapApplication } from '@angular/platform-browser';
+import { importProvidersFrom } from '@angular/core';
+import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
 import {
   TranslateLoader,
   TranslateModule,
@@ -18,6 +18,7 @@ bootstrapApplication(AppComponent, {
     ...appConfig.providers,
     provideHttpClient(),
     importProvidersFrom(
+      BrowserModule,
       TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,
@@ -28,8 +29,8 @@ bootstrapApplication(AppComponent, {
     ),
   ],
 })
-  .then(() => {
-    const translate = inject(TranslateService);
+  .then((appRef) => {
+    const translate = appRef.injector.get(TranslateService);
     translate.setDefaultLang(savedLanguage);
     translate.use(savedLanguage);
   })

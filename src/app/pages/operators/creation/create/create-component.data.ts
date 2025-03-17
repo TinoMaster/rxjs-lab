@@ -1,8 +1,8 @@
 import { PageData } from '@interfaces/global.interface';
 
 export const CREATE_PAGE_DATA: PageData = {
-  title: 'Crear',
-  description: 'Un ejemplo básico de un contador usando interval de RxJS',
+  title: 'operators.creation.create.title',
+  description: 'operators.creation.create.description',
   fileName: 'basic-observables.component',
   code: {
     typescript: `import { Component, OnDestroy } from '@angular/core';
@@ -16,7 +16,7 @@ import { take } from 'rxjs/operators';
 export class CreateComponent implements OnDestroy {
     hello: Observable<string>;
     subscription?: Subscription;
-    
+
     constructor() {
         this.hello = new Observable((observer: Observer<string>) => {
             observer.next('Hello');
