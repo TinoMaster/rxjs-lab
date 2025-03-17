@@ -1,9 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Observable, Observer, Subscription } from 'rxjs';
-import { ConsoleSimulatorComponent } from '@shared/components/ui';
 import { ConsoleLogTemplate, PageData } from '@interfaces/global.interface';
+import { ConsoleSimulatorComponent } from '@shared/components/ui';
+import { HeaderPagesComponent } from '@shared/components/ui/header-pages/header-pages.component';
+import { Observable, Observer, Subscription } from 'rxjs';
 import { CREATE_PAGE_DATA } from './create-component.data';
-import { HeaderPagesComponent } from '../../../../shared/components/ui/header-pages/header-pages.component';
 
 @Component({
   selector: 'app-create',
