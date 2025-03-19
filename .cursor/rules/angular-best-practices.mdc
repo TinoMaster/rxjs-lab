@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Use Angular CLI for project setup and management
+- Implement OnPush change detection strategy for better performance
+- Use Observables for asynchronous operations
+- Keep components small and focused on a single responsibility
+- Utilize Angular's dependency injection system

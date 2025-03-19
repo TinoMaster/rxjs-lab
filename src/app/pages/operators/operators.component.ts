@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NAVIGATION_ITEMS } from '@app/core/data/global.data';
+import { NavigationItem } from '@interfaces/global.interface';
 import {
   DescriptionPlusUlLinksComponent,
   HeaderPagesComponent,
 } from '@shared/components/ui';
-import { NavigationItem } from '@interfaces/global.interface';
-import { NAVIGATION_ITEMS } from '@app/core/data/global.data';
 
 @Component({
   selector: 'app-operators',
   imports: [HeaderPagesComponent, DescriptionPlusUlLinksComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-header-pages
       [title]="title"

@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Use JSDoc-style comments for function documentation
+- Write function descriptions, parameter explanations, and return types in Italian
+- Use Italian language for all inline comments and TODO notes
+- Ensure that all UI text and labels in HTML templates are in Italian
+- Maintain consistency in terminology across the project documentation

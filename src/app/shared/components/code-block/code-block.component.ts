@@ -14,25 +14,35 @@ declare let Prism: any;
   standalone: true,
   imports: [CommonModule, FileExtensionPipe],
   template: `
-    <h4 class="text-lg font-semibold text-gray-700 capitalize">
+    <h4
+      class="text-base md:text-lg lg:text-xl font-semibold text-gray-700 capitalize"
+    >
       Código {{ language }}
     </h4>
 
     <div class="bg-gray-900 rounded-lg overflow-hidden">
       <!-- Header con el nombre del archivo -->
-      <div class="flex items-center justify-between px-4 py-2 bg-gray-800">
-        <span class="text-sm text-gray-200">{{
+      <div
+        class="flex items-center justify-between px-3 md:px-4 py-2 bg-gray-800"
+      >
+        <span class="text-xs md:text-sm text-gray-200">{{
           fileName | fileExtension : language
         }}</span>
-        <span class="text-xs text-gray-400">{{ language }}</span>
+        <span class="text-[10px] md:text-xs text-gray-400">{{ language }}</span>
       </div>
       <!-- Contenido del código -->
       <pre
-        class="line-numbers"
+        class="line-numbers !text-xs md:!text-sm lg:!text-base"
       ><code #codeElement [class]="'language-' + language">{{ code }}</code></pre>
     </div>
   `,
-  styleUrls: ['./code-block.component.css'],
+  styles: [
+    `
+      :host ::ng-deep pre code {
+        font-size: inherit !important;
+      }
+    `,
+  ],
 })
 export class CodeBlockComponent implements AfterViewInit {
   @Input() code: string = '';

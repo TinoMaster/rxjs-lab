@@ -5,8 +5,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faChevronDown,
   faChevronRight,
+  faBars,
+  faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import { NAVIGATION_ITEMS } from '@data/global.data';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-main-layout',
@@ -19,15 +22,19 @@ import { NAVIGATION_ITEMS } from '@data/global.data';
     RouterLink,
     RouterLinkActive,
     FontAwesomeModule,
+    TranslateModule,
   ],
 })
 export class MainLayoutComponent {
   public readonly NAVIGATION_ITEMS = NAVIGATION_ITEMS;
 
   public expandedItems = new Set<string>();
+  public isMobileMenuOpen = false;
 
   public readonly chevronRight = faChevronRight;
   public readonly chevronDown = faChevronDown;
+  public readonly menuIcon = faBars;
+  public readonly closeIcon = faXmark;
 
   toggleExpanded(route: string): void {
     if (this.expandedItems.has(route)) {
@@ -39,5 +46,13 @@ export class MainLayoutComponent {
 
   isExpanded(route: string): boolean {
     return this.expandedItems.has(route);
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
   }
 }

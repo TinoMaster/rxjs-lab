@@ -1,0 +1,15 @@
+---
+description: Best practices for RxJS development in Angular applications
+globs: ["**/*.ts", "**/*.component.ts"]
+alwaysApply: true
+---
+- Use pipeable operators for better readability and performance
+- Subscribe to observables in the component's ngOnInit lifecycle hook
+- Unsubscribe from observables in ngOnDestroy to prevent memory leaks
+- Use shareReplay() for sharing observable results across multiple subscribers
+- Utilize async pipe in templates to automatically handle subscriptions
+- Implement proper error handling in observable chains
+- Use appropriate operators for transforming data streams
+- Consider using Subject variants (BehaviorSubject, ReplaySubject) when needed
+- Implement proper cleanup with takeUntil or other completion strategies
+- Document complex observable chains with marble diagrams

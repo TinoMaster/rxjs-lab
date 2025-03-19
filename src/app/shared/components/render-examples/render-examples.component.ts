@@ -7,18 +7,18 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     @for (example of examples; track example) {
-    <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+    <div class="lg:bg-white lg:shadow-lg rounded-lg lg:p-6 p-0 mb-6">
       <h3 class="text-xl font-semibold mb-4 text-purple-700">
         Ejemplo {{ example }}: {{ title }}
       </h3>
       <div class="space-y-6">
         <!-- Demo del componente -->
-        <div class="p-4 bg-gray-50 rounded-md">
+        <div class="p-2 bg-white rounded-md shadow-sm text-xs md:text-sm lg:text-base">
           <ng-content select="[example-demo]"></ng-content>
         </div>
 
         <!-- Código fuente -->
-        <div class="mt-6 space-y-4">
+        <div class="p-2 bg-white rounded-md shadow-sm">
           <ng-content select="[example-code]"></ng-content>
         </div>
       </div>

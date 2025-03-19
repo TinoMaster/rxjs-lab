@@ -24,6 +24,8 @@ export class CreateComponent implements OnDestroy {
   private logCounter = 0;
   subscribe: Subscription;
 
+  title = 'Create';
+
   pageData!: PageData;
 
   hello = new Observable((observer: Observer<string>) => {

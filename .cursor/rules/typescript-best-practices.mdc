@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Enable strict mode in tsconfig.json
+- Use interfaces for object shapes and types for utility types
+- Leverage union types and type guards for better type safety
+- Use readonly properties to ensure immutability where appropriate
+- Implement custom type guards for complex type checking
