@@ -32,6 +32,7 @@ import {
   catchError,
 } from 'rxjs/operators';
 import { input, signal } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 export interface RxJSExample {
   id: string;
@@ -52,6 +53,7 @@ export interface RxJSExample {
     MatCardModule,
     MatIconModule,
     MatTooltipModule,
+    TranslateModule,
   ],
   template: `
     <mat-card class="playground-container">
@@ -74,12 +76,16 @@ export interface RxJSExample {
           <mat-tab>
             <ng-template mat-tab-label>
               <mat-icon class="mr-2">description</mat-icon>
-              <span>Documentazione</span>
+              <span>{{
+                'rxjs-playground.wrapper.documentation' | translate
+              }}</span>
             </ng-template>
-            <div class="doc-section">
+            <div class="!px-4 !py-8 max-w-[1200px] mx-auto">
               <div class="mb-8">
                 <h3 class="!text-xl !font-semibold !text-purple-700 !mb-3">
-                  Descrizione
+                  {{
+                    'rxjs-playground.wrapper.description' | translate
+                  }}
                 </h3>
                 <p class="!text-gray-700 !leading-relaxed">
                   {{ fullDescription() }}
@@ -88,7 +94,9 @@ export interface RxJSExample {
 
               <div class="mb-8">
                 <h3 class="!text-xl !font-semibold !text-purple-700 !mb-3">
-                  Casi di uso comuni
+                  {{
+                    'rxjs-playground.wrapper.common_uses' | translate
+                  }}
                 </h3>
                 <ul class="!list-disc !pl-6 !space-y-2">
                   <li *ngFor="let use of commonUses()" class="!text-gray-700">
@@ -99,7 +107,9 @@ export interface RxJSExample {
 
               <div class="mb-8" *ngIf="marbleDiagram()">
                 <h3 class="!text-xl !font-semibold !text-purple-700 !mb-3">
-                  Diagramma di mármol
+                  {{
+                    'rxjs-playground.wrapper.marble_diagram' | translate
+                  }}
                   <mat-icon
                     class="align-middle ml-2 text-purple-500 cursor-help"
                     matTooltip="I diagrammi di mármol sono una rappresentazione visiva del flusso di dati in RxJS"
@@ -121,7 +131,9 @@ export interface RxJSExample {
           <mat-tab class="!w-full">
             <ng-template mat-tab-label>
               <mat-icon class="mr-2">code</mat-icon>
-              <span>Esempi</span>
+              <span>{{
+                'rxjs-playground.wrapper.examples' | translate
+              }}</span>
             </ng-template>
             <div class="examples-section">
               <mat-tab-group
@@ -158,7 +170,9 @@ export interface RxJSExample {
                         class="mb-4 w-full"
                       >
                         <mat-icon class="mr-2">play_arrow</mat-icon>
-                        Esegui esempio
+                        {{
+                          'rxjs-playground.wrapper.btn-run' | translate
+                        }}
                       </button>
                       <div class="console-output">
                         <div
@@ -183,23 +197,33 @@ export interface RxJSExample {
           <mat-tab>
             <ng-template mat-tab-label>
               <mat-icon class="mr-2">fitness_center</mat-icon>
-              <span>Esercizi</span>
+              <span>{{
+                'rxjs-playground.wrapper.exercises' | translate
+              }}</span>
             </ng-template>
             <div class="exercises-section p-4">
               <div class="bg-purple-50 rounded-lg p-6">
                 <h3 class="text-xl font-semibold text-purple-700 mb-4">
                   <mat-icon class="align-middle mr-2">school</mat-icon>
-                  Esercizi pratici
+                  {{
+                    'rxjs-playground.wrapper.exercises' | translate
+                  }}
                 </h3>
                 <p class="!text-gray-600 !mb-4">
-                  Pratica ciò che hai imparato con questi esercizi interattivi.
+                  {{
+                    'rxjs-playground.wrapper.exercises_description' | translate
+                  }}
                 </p>
                 <!-- Esercizi -->
                 <div class="text-center py-8">
                   <mat-icon class="text-6xl text-purple-300"
                     >construction</mat-icon
                   >
-                  <p class="!text-purple-600 !mt-4">Prossimamente...</p>
+                  <p class="!text-purple-600 !mt-4">
+                    {{
+                      'rxjs-playground.wrapper.exercises_coming_soon' | translate
+                    }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -220,12 +244,6 @@ export interface RxJSExample {
 
       .rxjs-tabs {
         min-height: 400px;
-      }
-
-      .doc-section {
-        padding: 2rem 0;
-        max-width: 1200px;
-        margin: 0 auto;
       }
 
       .examples-section {

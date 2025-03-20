@@ -1,5 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
-import { TranslationService } from '@app/services/helpers/translation.service';
+import { LanguageService } from '@app/services/language.service';
 import { RxjsPlaygroundComponent } from '@shared/components/rxjs-playground/rxjs-playground.component';
 import { BASIC_OBSERVABLES_I18N } from './basic-observables.data';
 
@@ -19,10 +19,11 @@ import { BASIC_OBSERVABLES_I18N } from './basic-observables.data';
   `,
 })
 export class BasicObservablesComponent {
-  private translationService = inject(TranslationService);
+  private languageService = inject(LanguageService);
 
   pageData = computed(() => {
-    const currentLang = this.translationService.getCurrentLanguage()();
-    return BASIC_OBSERVABLES_I18N[currentLang] || BASIC_OBSERVABLES_I18N['en'];
+    const currentLang = this.languageService.getCurrentLanguage()();
+    console.log('currentLang', currentLang);
+    return BASIC_OBSERVABLES_I18N[currentLang] || BASIC_OBSERVABLES_I18N['es'];
   });
 }

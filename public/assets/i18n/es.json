@@ -1,7 +1,15 @@
 {
-  "operators": {
-    "creation": {
-      "create": {
+  "rxjs-playground": {
+    "wrapper": {
+      "documentation": "Documentación",
+      "common_uses": "Casos de uso comunes",
+      "examples": "Ejemplos",
+      "description": "Descripción",
+      "btn-run": "Ejecutar",
+      "exercises": "Ejercicios"
+    },
+    "operators": {
+      "creation": {
         "title": "Crear un Observable",
         "description": "Un ejemplo básico de un contador usando interval de RxJS",
         "code": {

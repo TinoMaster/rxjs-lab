@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MainLayoutComponent } from '@shared/layouts';
+import { LanguageService } from './services/language.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,9 @@ import { MainLayoutComponent } from '@shared/layouts';
   template: `<app-main-layout></app-main-layout>`,
 })
 export class AppComponent {
-  title = 'rxjs_examples_angular';
+  private languageService = inject(LanguageService);
+
+  constructor() {
+    this.languageService.initialize();
+  }
 }

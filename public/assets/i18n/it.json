@@ -1,4 +1,14 @@
 {
+  "rxjs-playground": {
+    "wrapper": {
+      "documentation": "Documentazione",
+      "common_uses": "Casi di uso comuni",
+      "examples": "Esempi",
+      "description": "Descrizione",
+      "btn-run": "Esegui",
+      "exercises": "Esercizi"
+    }
+  },
   "operators": {
     "creation": {
       "create": {

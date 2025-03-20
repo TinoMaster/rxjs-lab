@@ -9,9 +9,7 @@ import {
 import { AppComponent } from './app/app.component';
 import { appConfig, createTranslateLoader } from './app/app.config';
 
-const savedLanguage = localStorage.getItem('language') ?? 'it';
-
-console.log('savedLanguage', savedLanguage);
+const savedLanguage = localStorage.getItem('preferredLanguage') ?? 'es';
 
 bootstrapApplication(AppComponent, {
   providers: [

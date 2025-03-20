@@ -1,12 +1,14 @@
-import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { SupportedLanguages } from '@app/core/interfaces/global.interface';
+import { LanguageService } from '@app/services/language.service';
+import { TranslateService } from '@ngx-translate/core';
 
 interface Language {
-  code: string;
+  code: SupportedLanguages;
   name: string;
   flag: string;
 }
@@ -24,55 +26,62 @@ interface Language {
 
     <mat-menu #menu="matMenu">
       @for (lang of languages; track lang.code) {
-        <button
-          mat-menu-item
-          (click)="changeLanguage(lang.code)"
-          [class.active]="currentLang() === lang.code"
-        >
-          <span class="flag">{{ lang.flag }}</span>
-          <span class="lang-name">{{ lang.name }}</span>
-        </button>
+      <button
+        mat-menu-item
+        (click)="changeLanguage(lang.code)"
+        [class.active]="currentLang() === lang.code"
+      >
+        <span class="flag">{{ lang.flag }}</span>
+        <span class="lang-name">{{ lang.name }}</span>
+      </button>
       }
     </mat-menu>
   `,
-  styles: [`
-    .language-btn {
-      min-width: 0;
-      padding: 0 8px;
-      height: 36px;
-    }
-    .flag {
-      font-size: 1.2em;
-      margin-right: 8px;
-    }
-    .lang-code {
-      text-transform: uppercase;
-      margin-right: 4px;
-    }
-    .lang-name {
-      margin-left: 8px;
-    }
-    .active {
-      background: rgba(0,0,0,0.04);
-    }
-  `]
+  styles: [
+    `
+      .language-btn {
+        min-width: 0;
+        padding: 0 8px;
+        height: 36px;
+      }
+      .flag {
+        font-size: 1.2em;
+        margin-right: 8px;
+      }
+      .lang-code {
+        text-transform: uppercase;
+        margin-right: 4px;
+      }
+      .lang-name {
+        margin-left: 8px;
+      }
+      .active {
+        background: rgba(0, 0, 0, 0.04);
+      }
+    `,
+  ],
 })
 export class LanguageSelectorComponent {
   private translate = inject(TranslateService);
+  private languageService = inject(LanguageService);
 
-  currentLang = signal(this.translate.currentLang || 'en');
+  currentLang = this.languageService.getCurrentLanguage();
 
   languages: Language[] = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' }
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'it', name: 'Italiano', flag: '🇮🇹' },
   ];
 
   getCurrentLanguageFlag(): string {
-    return this.languages.find(lang => lang.code === this.currentLang())?.flag || '🌐';
+    return (
+      this.languages.find((lang) => lang.code === this.currentLang())?.flag ||
+      '🌐'
+    );
   }
 
-  changeLanguage(langCode: string) {
+  changeLanguage(langCode: SupportedLanguages) {
     this.translate.use(langCode);
-    this.currentLang.set(langCode);
+    this.languageService.setLanguage(langCode);
   }
 }

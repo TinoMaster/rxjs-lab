@@ -1,6 +1,6 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
-export type SupportedLanguages = 'en' | 'es';
+export type SupportedLanguages = 'en' | 'es' | 'it';
 export interface DataPage {
   title: string;
   description: string;
