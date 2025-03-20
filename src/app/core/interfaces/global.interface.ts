@@ -1,5 +1,23 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
+export type SupportedLanguages = 'en' | 'es';
+export interface DataPage {
+  title: string;
+  description: string;
+  fullDescription: string;
+  commonUses: string[];
+  examples: Example[];
+  marbleDiagram?: string;
+}
+
+export interface Example {
+  id: string;
+  title: string;
+  description: string;
+  code: string;
+}
+
+/* pendiente a borra luego de la migración a la nueva interfaz */
 export interface PageData {
   numberOfExamples?: number;
   title: string;

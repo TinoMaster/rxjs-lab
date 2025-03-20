@@ -10,6 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { NAVIGATION_ITEMS } from '@data/global.data';
 import { TranslateModule } from '@ngx-translate/core';
+import { LanguageSelectorComponent } from '@shared/components/language-selector/language-selector.component';
 
 @Component({
   selector: 'app-main-layout',
@@ -23,6 +24,7 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterLinkActive,
     FontAwesomeModule,
     TranslateModule,
+    LanguageSelectorComponent,
   ],
 })
 export class MainLayoutComponent {

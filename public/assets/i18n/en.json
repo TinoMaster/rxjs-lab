@@ -1,0 +1,20 @@
+{
+  "operators": {
+    "creation": {
+      "create": {
+        "title": "Create an Observable",
+        "description": "A basic example of a counter using interval from RxJS",
+        "code": {
+          "comments": {
+            "declare_observable": "Declare an Observable",
+            "subscription_property": "Subscription Property",
+            "create_observable": "Create an Observable",
+            "emit_hello": "Emit Hello",
+            "emit_world": "Emit World",
+            "complete_observable": "Complete the Observable"
+          }
+        }
+      }
+    }
+  }
+}

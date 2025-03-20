@@ -176,13 +176,19 @@
     >
       <div class="px-6 py-4 flex items-center justify-between">
         <h2 class="text-xl font-semibold text-gray-800">RxJS Lab</h2>
-        <!-- Botón de menú móvil -->
-        <button
-          class="lg:hidden text-gray-600 hover:text-gray-900"
-          (click)="toggleMobileMenu()"
-        >
-          <fa-icon [icon]="menuIcon" class="text-xl"></fa-icon>
-        </button>
+
+        <div class="flex items-center gap-4">
+          <!-- Selector de idioma -->
+          <app-language-selector></app-language-selector>
+
+          <!-- Botón de menú móvil -->
+          <button
+            class="lg:hidden text-gray-600 hover:text-gray-900"
+            (click)="toggleMobileMenu()"
+          >
+            <fa-icon [icon]="menuIcon" class="text-xl"></fa-icon>
+          </button>
+        </div>
       </div>
     </header>
 
