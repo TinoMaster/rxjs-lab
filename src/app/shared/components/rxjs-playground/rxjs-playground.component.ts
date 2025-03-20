@@ -55,7 +55,7 @@ export interface RxJSExample {
   ],
   template: `
     <mat-card class="playground-container">
-      <mat-card-header class="!bg-purple-50 !p-10 rounded-t-lg">
+      <mat-card-header class="!bg-purple-50 !p-5 rounded-t-lg">
         <mat-card-title class="!text-2xl !font-bold !text-purple-800">{{
           title()
         }}</mat-card-title>
@@ -64,7 +64,7 @@ export interface RxJSExample {
         }}</mat-card-subtitle>
       </mat-card-header>
 
-      <mat-card-content class="!p-0">
+      <mat-card-content class="!p-0 !w-full">
         <mat-tab-group
           (selectedIndexChange)="onTabChange($event)"
           class="rxjs-tabs"
@@ -118,21 +118,24 @@ export interface RxJSExample {
           </mat-tab>
 
           <!-- Ejemplos -->
-          <mat-tab>
+          <mat-tab class="!w-full">
             <ng-template mat-tab-label>
               <mat-icon class="mr-2">code</mat-icon>
               <span>Esempi</span>
             </ng-template>
-            <div class="doc-section">
+            <div class="examples-section">
               <mat-tab-group
-                class="!p-0"
+                class="!p-0 !w-full"
                 (selectedIndexChange)="onTabChange($event)"
               >
                 <mat-tab
                   *ngFor="let example of examples()"
                   [label]="example.title"
+                  class="!w-full"
                 >
-                  <div class="flex flex-col lg:flex-row gap-8 p-4">
+                  <div
+                    class="flex flex-col lg:flex-row gap-8 p-4 justify-center !w-full"
+                  >
                     <div class="code-section">
                       <div
                         class="bg-gray-800 text-white p-2 rounded-t-lg flex items-center"
@@ -210,6 +213,7 @@ export interface RxJSExample {
       .playground-container {
         border: none;
         height: 100%;
+        min-height: calc(100vh - 60px);
         position: relative;
         overflow: auto;
       }
@@ -219,8 +223,15 @@ export interface RxJSExample {
       }
 
       .doc-section {
+        padding: 2rem 0;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .examples-section {
         padding: 2rem 1rem;
-        max-width: 900px;
+        max-width: 1200px;
+        width: 100%;
         margin: 0 auto;
       }
 

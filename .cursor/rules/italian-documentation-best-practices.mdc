@@ -1,10 +1,71 @@
 ---
-description: 
-globs: 
+name: "Italian Documentation Standards"
+description: "Regole per la documentazione in italiano"
+globs: ["**/*.ts", "**/*.html", "**/*.scss"]
 alwaysApply: true
 ---
+
 - Use JSDoc-style comments for function documentation
 - Write function descriptions, parameter explanations, and return types in Italian
 - Use Italian language for all inline comments and TODO notes
 - Ensure that all UI text and labels in HTML templates are in Italian
 - Maintain consistency in terminology across the project documentation
+
+## Esempio di Documentazione
+```typescript
+/**
+ * @descrizione Calcola il totale dell'ordine
+ * @param {number} prezzoUnitario - Il prezzo per unità
+ * @returns {number} Il totale calcolato
+ */
+```
+
+# Regole di Documentazione in Italiano
+
+## Documentazione delle Funzioni
+```typescript
+/**
+ * @descrizione Breve descrizione della funzione
+ * @param {tipo} nomeParametro - Descrizione del parametro
+ * @returns {tipo} Descrizione del valore di ritorno
+ * @esempio
+ * const risultato = miaFunzione(parametro);
+ */
+```
+
+## Commenti nel Codice
+- Tutti i commenti devono essere in italiano
+- Usa commenti significativi che spiegano il "perché" non il "cosa"
+- Formato per TODO: `// TODO: [data] descrizione del task`
+
+## Template HTML
+- Tutti i testi nell'interfaccia utente devono essere in italiano
+- Usa attributi aria-label in italiano per accessibilità
+
+## Convenzioni di Nomenclatura
+- Variabili e funzioni: camelCase con nomi descrittivi in italiano
+- Costanti: SNAKE_CASE in italiano
+- Classi: PascalCase in italiano
+
+## Esempi di Uso Corretto
+```typescript
+// CORRETTO
+/**
+ * @descrizione Calcola il totale dell'ordine
+ * @param {number} prezzoUnitario - Prezzo per singolo articolo
+ * @param {number} quantita - Numero di articoli
+ * @returns {number} Prezzo totale dell'ordine
+ */
+function calcolaTotaleOrdine(prezzoUnitario: number, quantita: number): number {
+  return prezzoUnitario * quantita;
+}
+
+// NON CORRETTO
+/**
+ * @description Calculates order total
+ * @param {number} price - Price per item
+ * @returns {number} Total price
+ */
+function calculateTotal(price: number): number {
+  return price;
+}

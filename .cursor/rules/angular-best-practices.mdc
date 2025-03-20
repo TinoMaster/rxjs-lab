@@ -1,6 +1,6 @@
 ---
-description: 
-globs: 
+description: Best practices for Angular development focusing on performance and maintainability
+globs: ["**/*.ts", "**/*.component.ts", "**/*.service.ts", "**/*.module.ts"]
 alwaysApply: true
 ---
 - Use Angular CLI for project setup and management
@@ -8,3 +8,8 @@ alwaysApply: true
 - Use Observables for asynchronous operations
 - Keep components small and focused on a single responsibility
 - Utilize Angular's dependency injection system
+- Follow Angular's style guide for naming conventions
+- Implement lazy loading for feature modules
+- Use standalone components when appropriate
+- Implement proper error handling and loading states
+- Document component inputs, outputs, and public methods
