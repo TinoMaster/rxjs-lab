@@ -1,11 +1,12 @@
 import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, SecurityContext } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { MarkdownModule } from 'ngx-markdown';
 
 /* Configuración del translate */
 export function createTranslateLoader(http: HttpClient) {
@@ -25,6 +26,9 @@ export const appConfig: ApplicationConfig = {
           useFactory: createTranslateLoader,
           deps: [HttpClient]
         }
+      }),
+      MarkdownModule.forRoot({
+        sanitize: SecurityContext.NONE
       })
     ),
     {

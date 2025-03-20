@@ -1,13 +1,15 @@
 import { Component, computed, inject } from '@angular/core';
-import { LanguageService } from '@app/services/language.service';
-import { RxjsPlaygroundComponent } from '@shared/components/rxjs-playground/rxjs-playground.component';
 import {
   DataPage,
   SupportedLanguages,
 } from '@app/core/interfaces/global.interface';
-import { EN_BASIC_OBSERVABLES } from './i18n/en';
-import { ES_BASIC_OBSERVABLES } from './i18n/es';
-import { IT_BASIC_OBSERVABLES } from './i18n/it';
+import { LanguageService } from '@app/services/language.service';
+import { RxjsPlaygroundComponent } from '@shared/components/rxjs-playground/rxjs-playground.component';
+import {
+  EN_BASIC_OBSERVABLES,
+  ES_BASIC_OBSERVABLES,
+  IT_BASIC_OBSERVABLES,
+} from './i18n';
 
 @Component({
   selector: 'app-basic-observables',
@@ -17,8 +19,7 @@ import { IT_BASIC_OBSERVABLES } from './i18n/it';
     <app-rxjs-playground
       [title]="pageData().title"
       [description]="pageData().description"
-      [fullDescription]="pageData().fullDescription"
-      [commonUses]="pageData().commonUses"
+      [documentation]="pageData().documentation"
       [examples]="pageData().examples"
       [marbleDiagram]="pageData().marbleDiagram"
     />

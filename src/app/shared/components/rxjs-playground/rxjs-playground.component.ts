@@ -33,6 +33,7 @@ import {
 } from 'rxjs/operators';
 import { input, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { MarkdownModule } from 'ngx-markdown';
 
 export interface RxJSExample {
   id: string;
@@ -54,6 +55,7 @@ export interface RxJSExample {
     MatIconModule,
     MatTooltipModule,
     TranslateModule,
+    MarkdownModule,
   ],
   template: `
     <mat-card class="playground-container">
@@ -81,35 +83,17 @@ export interface RxJSExample {
               }}</span>
             </ng-template>
             <div class="!px-4 !py-8 max-w-[1200px] mx-auto">
-              <div class="mb-8">
-                <h3 class="!text-xl !font-semibold !text-purple-700 !mb-3">
-                  {{
-                    'rxjs-playground.wrapper.description' | translate
-                  }}
-                </h3>
-                <p class="!text-gray-700 !leading-relaxed">
-                  {{ fullDescription() }}
-                </p>
-              </div>
-
-              <div class="mb-8">
-                <h3 class="!text-xl !font-semibold !text-purple-700 !mb-3">
-                  {{
-                    'rxjs-playground.wrapper.common_uses' | translate
-                  }}
-                </h3>
-                <ul class="!list-disc !pl-6 !space-y-2">
-                  <li *ngFor="let use of commonUses()" class="!text-gray-700">
-                    {{ use }}
-                  </li>
-                </ul>
+              <!-- Content Markdown -->
+              <div class="documentation-section">
+                <markdown
+                  [data]="documentation()"
+                  class="markdown-content"
+                ></markdown>
               </div>
 
               <div class="mb-8" *ngIf="marbleDiagram()">
                 <h3 class="!text-xl !font-semibold !text-purple-700 !mb-3">
-                  {{
-                    'rxjs-playground.wrapper.marble_diagram' | translate
-                  }}
+                  {{ 'rxjs-playground.wrapper.marble_diagram' | translate }}
                   <mat-icon
                     class="align-middle ml-2 text-purple-500 cursor-help"
                     matTooltip="I diagrammi di mármol sono una rappresentazione visiva del flusso di dati in RxJS"
@@ -131,9 +115,7 @@ export interface RxJSExample {
           <mat-tab class="!w-full">
             <ng-template mat-tab-label>
               <mat-icon class="mr-2">code</mat-icon>
-              <span>{{
-                'rxjs-playground.wrapper.examples' | translate
-              }}</span>
+              <span>{{ 'rxjs-playground.wrapper.examples' | translate }}</span>
             </ng-template>
             <div class="examples-section">
               <mat-tab-group
@@ -170,9 +152,7 @@ export interface RxJSExample {
                         class="mb-4 w-full"
                       >
                         <mat-icon class="mr-2">play_arrow</mat-icon>
-                        {{
-                          'rxjs-playground.wrapper.btn-run' | translate
-                        }}
+                        {{ 'rxjs-playground.wrapper.btn-run' | translate }}
                       </button>
                       <div class="console-output">
                         <div
@@ -197,17 +177,13 @@ export interface RxJSExample {
           <mat-tab>
             <ng-template mat-tab-label>
               <mat-icon class="mr-2">fitness_center</mat-icon>
-              <span>{{
-                'rxjs-playground.wrapper.exercises' | translate
-              }}</span>
+              <span>{{ 'rxjs-playground.wrapper.exercises' | translate }}</span>
             </ng-template>
             <div class="exercises-section p-4">
               <div class="bg-purple-50 rounded-lg p-6">
                 <h3 class="text-xl font-semibold text-purple-700 mb-4">
                   <mat-icon class="align-middle mr-2">school</mat-icon>
-                  {{
-                    'rxjs-playground.wrapper.exercises' | translate
-                  }}
+                  {{ 'rxjs-playground.wrapper.exercises' | translate }}
                 </h3>
                 <p class="!text-gray-600 !mb-4">
                   {{
@@ -221,7 +197,8 @@ export interface RxJSExample {
                   >
                   <p class="!text-purple-600 !mt-4">
                     {{
-                      'rxjs-playground.wrapper.exercises_coming_soon' | translate
+                      'rxjs-playground.wrapper.exercises_coming_soon'
+                        | translate
                     }}
                   </p>
                 </div>
@@ -288,8 +265,7 @@ export interface RxJSExample {
 export class RxjsPlaygroundComponent implements OnDestroy {
   title = input.required<string>();
   description = input.required<string>();
-  fullDescription = input.required<string>();
-  commonUses = input<string[]>([]);
+  documentation = input.required<string>();
   examples = input<RxJSExample[]>([]);
   marbleDiagram = input<string | undefined>();
 

@@ -4,7 +4,7 @@ export type SupportedLanguages = 'en' | 'es' | 'it';
 export interface DataPage {
   title: string;
   description: string;
-  fullDescription: string;
+  documentation: string;
   commonUses: string[];
   examples: Example[];
   marbleDiagram?: string;

@@ -1,11 +1,42 @@
-export const EN_BASIC_OBSERVABLES = {
+import { DataPage } from '@app/core/interfaces/global.interface';
+
+export const EN_BASIC_OBSERVABLES: DataPage = {
   title: 'Basic Observables',
   description: 'Fundamentals and basic concepts of Observables in RxJS',
-  fullDescription: `Observables are the fundamental concept in RxJS. They represent a collection of future values or events that can be observed.
-    Unlike Promises that handle a single value, Observables can emit multiple values over time.
+  documentation: `
+# Basic Observables in RxJS
 
-    Observables are lazy, which means they don't start emitting values until someone subscribes to them. This makes them very efficient
-    and perfect for handling data flows and events in Angular applications.`,
+Observables are the fundamental building blocks of RxJS. They are collections of future values or events that can be observed.
+
+## Main Characteristics
+
+- **Lazy Evaluation**: Observables are lazy by nature
+- **Multiple Values**: They can emit multiple values over time
+- **Cancellable**: Subscriptions can be cancelled
+
+## Creating Observables
+
+There are several ways to create Observables:
+
+\`\`\`typescript
+// Using the constructor
+const observable = new Observable(subscriber => {
+  subscriber.next(1);
+  subscriber.next(2);
+  subscriber.complete();
+});
+
+// Using creation operators
+const numbers$ = of(1, 2, 3, 4, 5);
+const interval$ = interval(1000);
+\`\`\`
+
+## Best Practices
+
+1. Name Observables with the \`$\` suffix
+2. Use creation operators when possible
+3. Always handle subscription cleanup
+`,
   commonUses: [
     'Handle user events (clicks, keystrokes, etc.)',
     'Make HTTP calls and manage their responses',
