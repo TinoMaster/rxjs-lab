@@ -17,19 +17,6 @@ export interface Example {
   code: string;
 }
 
-/* pendiente a borra luego de la migración a la nueva interfaz */
-export interface PageData {
-  numberOfExamples?: number;
-  title: string;
-  description: string;
-  code: {
-    typescript?: string;
-    html?: string;
-    css?: string;
-  };
-  fileName: string;
-}
-
 export interface NavigationItem {
   label: string;
   route: string;

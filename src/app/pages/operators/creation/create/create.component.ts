@@ -1,70 +1,37 @@
-import { Component, OnDestroy } from '@angular/core';
-import { ConsoleLogTemplate, PageData } from '@interfaces/global.interface';
-import { ConsoleSimulatorComponent } from '@shared/components/ui';
-import { HeaderPagesComponent } from '@shared/components/ui/header-pages/header-pages.component';
-import { Observable, Observer, Subscription } from 'rxjs';
-import { CREATE_PAGE_DATA } from './create-component.data';
+import { Component, computed, inject } from '@angular/core';
+import {
+  DataPage,
+  SupportedLanguages,
+} from '@app/core/interfaces/global.interface';
+import { LanguageService } from '@app/services';
+import { RxjsPlaygroundComponent } from '@app/shared/components/rxjs-playground/rxjs-playground.component';
+import { EN_CREATE, ES_CREATE, IT_CREATE } from './i18n';
 
 @Component({
   selector: 'app-create',
   standalone: true,
-  imports: [ConsoleSimulatorComponent, HeaderPagesComponent],
-  templateUrl: './create.component.html',
-  styles: [
-    `
-      :host {
-        display: block;
-        padding: 1rem;
-      }
-    `,
-  ],
+  imports: [RxjsPlaygroundComponent],
+  template: `
+    <app-rxjs-playground
+      [title]="pageData().title"
+      [description]="pageData().description"
+      [documentation]="pageData().documentation"
+      [examples]="pageData().examples"
+      [marbleDiagram]="pageData().marbleDiagram"
+    />
+  `,
 })
-export class CreateComponent implements OnDestroy {
-  consoleLogs: Array<ConsoleLogTemplate> = [];
-  private logCounter = 0;
-  subscribe: Subscription;
+export class CreateComponent {
+  private languageService = inject(LanguageService);
 
-  title = 'Create';
+  CREATE_I18N: Record<SupportedLanguages, DataPage> = {
+    en: EN_CREATE,
+    es: ES_CREATE,
+    it: IT_CREATE,
+  };
 
-  pageData!: PageData;
-
-  hello = new Observable((observer: Observer<string>) => {
-    observer.next('Hello');
-    observer.next('World');
-    observer.complete();
+  pageData = computed(() => {
+    const currentLang = this.languageService.getCurrentLanguage()();
+    return this.CREATE_I18N[currentLang] || this.CREATE_I18N['es'];
   });
-
-  constructor() {
-    this.pageData = CREATE_PAGE_DATA;
-
-    this.subscribe = this.hello.subscribe({
-      next: (val) => {
-        this.addLog(val);
-        console.log(val);
-      },
-      complete: () => {
-        this.addLog('Observable completed', 'info');
-        console.log('Observable completed');
-      },
-      error: (err) => {
-        this.addLog(err, 'error');
-        console.error(err);
-      },
-    });
-  }
-
-  private addLog(
-    content: string,
-    type: 'log' | 'error' | 'warn' | 'info' = 'log'
-  ) {
-    this.consoleLogs.push({
-      id: this.logCounter++,
-      content,
-      type,
-    });
-  }
-
-  ngOnDestroy() {
-    this.subscribe.unsubscribe();
-  }
 }
