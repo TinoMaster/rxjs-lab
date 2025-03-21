@@ -37,14 +37,6 @@ const interval$ = interval(1000);
 2. Usar operadores de creación cuando sea posible
 3. Siempre manejar la limpieza de suscripciones
 `,
-  commonUses: [
-    'Manejar eventos del usuario (clicks, teclas, etc.)',
-    'Realizar llamadas HTTP y gestionar sus respuestas',
-    'Implementar contadores y temporizadores',
-    'Gestionar el estado de la aplicación',
-    'Manejar websockets y conexiones en tiempo real',
-    'Implementar autocompletado y búsqueda en tiempo real',
-  ],
   examples: [
     {
       id: 'interval-counter',

@@ -47,6 +47,5 @@ const customObservable$ = Observable.create(observer => {
 - Llama a \`observer.complete()\` cuando termines
 - Implementa siempre una función de limpieza si es necesario
   `,
-  commonUses: [],
   examples: [],
 };

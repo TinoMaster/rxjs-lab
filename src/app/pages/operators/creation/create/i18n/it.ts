@@ -47,6 +47,5 @@ export const IT_CREATE: DataPage = {
   - Chiama \`observer.complete()\` quando hai finito
   - Implementa sempre una logica di pulizia se necessario
   `,
-  commonUses: [],
   examples: [],
 };

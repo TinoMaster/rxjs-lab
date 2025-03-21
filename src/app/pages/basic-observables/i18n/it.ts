@@ -37,11 +37,6 @@ const interval$ = interval(1000);
 2. Utilizzare gli operatori di creazione quando possibile
 3. Gestire sempre la pulizia delle sottoscrizioni
 `,
-  commonUses: [
-    'Gestione degli eventi del mouse',
-    'Richieste HTTP',
-    'Cronometri',
-  ],
   examples: [
     {
       id: 'interval-counter',

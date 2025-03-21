@@ -37,14 +37,6 @@ const interval$ = interval(1000);
 2. Use creation operators when possible
 3. Always handle subscription cleanup
 `,
-  commonUses: [
-    'Handle user events (clicks, keystrokes, etc.)',
-    'Make HTTP calls and manage their responses',
-    'Implement counters and timers',
-    'Manage application state',
-    'Handle websockets and real-time connections',
-    'Implement autocomplete and real-time search',
-  ],
   examples: [
     {
       id: 'interval-counter',

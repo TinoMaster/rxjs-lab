@@ -5,7 +5,6 @@ export interface DataPage {
   title: string;
   description: string;
   documentation: string;
-  commonUses: string[];
   examples: Example[];
   marbleDiagram?: string;
 }
