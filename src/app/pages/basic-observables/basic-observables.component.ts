@@ -37,25 +37,16 @@ export class BasicObservablesComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    /* Italian documentation */
-    this.markdownReaderService
-      .getMarkdown('/assets/markdown/pages/basic-observables/it-doc.md')
-      .subscribe((res) => {
-        console.log('res', res);
-        this.BASIC_OBSERVABLES_I18N.it.documentation = res.toString();
-      });
-    /* Spanish documentation */
-    this.markdownReaderService
-      .getMarkdown('/assets/markdown/pages/basic-observables/es-doc.md')
-      .subscribe((res) => {
-        this.BASIC_OBSERVABLES_I18N.es.documentation = res.toString();
-      });
-    /* English documentation */
-    this.markdownReaderService
-      .getMarkdown('/assets/markdown/pages/basic-observables/en-doc.md')
-      .subscribe((res) => {
-        this.BASIC_OBSERVABLES_I18N.en.documentation = res.toString();
-      });
+    const languages: SupportedLanguages[] = ['it', 'es', 'en'];
+    /* Get the documentation for each language */
+    languages.forEach((lang) => {
+      this.markdownReaderService
+        .getMarkdown(`/assets/markdown/pages/basic-observables/${lang}-doc.md`)
+        .subscribe((res) => {
+          console.log('res', res);
+          this.BASIC_OBSERVABLES_I18N[lang].documentation = res.toString();
+        });
+    });
   }
 
   pageData = computed(() => {
